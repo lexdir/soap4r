@@ -23,7 +23,7 @@ class ClassDefCreator
   def initialize(definitions, name_creator, modulepath = nil)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = modulepath
+    @modulepath = [modulepath].flatten
     @elements = definitions.collect_elements
     @elements.uniq!
     @attributes = definitions.collect_attributes

@@ -20,7 +20,7 @@ class LiteralMappingRegistryCreator
   def initialize(definitions, name_creator, modulepath, defined_const)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = modulepath
+    @modulepath = [modulepath].flatten
     @elements = definitions.collect_elements
     @elements.uniq!
     @attributes = definitions.collect_attributes

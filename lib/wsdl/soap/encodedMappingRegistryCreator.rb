@@ -22,7 +22,7 @@ class EncodedMappingRegistryCreator
   def initialize(definitions, name_creator, modulepath, defined_const)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = modulepath
+    @modulepath = [modulepath].flatten
     @simpletypes = definitions.collect_simpletypes
     @simpletypes.uniq!
     @complextypes = definitions.collect_complextypes

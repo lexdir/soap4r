@@ -22,7 +22,7 @@ class ClientSkeltonCreator
   def initialize(definitions, name_creator, modulepath = nil)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = modulepath
+    @modulepath = [modulepath].flatten
   end
 
   def dump(service_name)
