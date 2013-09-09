@@ -25,7 +25,7 @@ class MappingRegistryCreator
   def initialize(definitions, name_creator, modulepath = nil)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = [modulepath].flatten
+    @modulepath = modulepath
   end
 
   def dump

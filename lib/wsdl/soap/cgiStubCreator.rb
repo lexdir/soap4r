@@ -24,7 +24,7 @@ class CGIStubCreator
   def initialize(definitions, name_creator, modulepath = nil)
     @definitions = definitions
     @name_creator = name_creator
-    @modulepath = [modulepath].flatten
+    @modulepath = modulepath
   end
 
   def dump(service_name)
@@ -49,7 +49,8 @@ private
   def dump_porttype(porttype)
     class_name = mapped_class_name(porttype.name, @modulepath)
     defined_const = {}
-    methoddef = MethodDefCreator.new(@definitions, @name_creator, @modulepath, defined_const).dump(porttype.name)
+    result = MethodDefCreator.new(@definitions, @name_creator, @modulepath, defined_const).dump(porttype.name)
+    methoddef = result[:methoddef]
     wsdl_name = @definitions.name ? @definitions.name.name : 'default'
     mrname = safeconstname(wsdl_name + 'MappingRegistry')
     c1 = XSD::CodeGen::ClassDef.new(class_name)
